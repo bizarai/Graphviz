@@ -3,30 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Concepts Knowledge Graph</title>
+    <title>Interactive AI Knowledge Graph</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #cy {
+            width: 100%;
             height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        .graph-container {
-            text-align: center;
-        }
-        .graph-container img {
-            max-width: 100%;
-            height: auto;
+            display: block;
         }
     </style>
+    <script src="https://unpkg.com/cytoscape@3.21.1/dist/cytoscape.min.js"></script>
 </head>
 <body>
-    <div class="graph-container">
-        <h1>AI Concepts Knowledge Graph</h1>
-        <img src="ai_knowledge_graph.svg" alt="AI Concepts Knowledge Graph">
-    </div>
+    <div id="cy"></div>
+
+    <script>
+        var cy = cytoscape({
+            container: document.getElementById('cy'),
+
+            elements: [
+                { data: { id: 'Supercomputing', label: 'Supercomputing' } },
+                { data: { id: 'Reinforcement_Learning', label: 'Reinforcement Learning' } },
+                { data: { id: 'Transformer', label: 'Transformer' } },
+                { data: { id: 'High_Dimensionality', label: 'High Dimensionality' } },
+                { data: { id: 'Multimodal', label: 'Multimodal' } },
+                { data: { id: 'Diffusion_Models', label: 'Diffusion Models' } },
+                { data: { id: 'Meta_Learning', label: 'Meta Learning' } },
+                { data: { id: 'Planning', label: 'Planning' } },
+                { data: { id: 'Context', label: 'Context' } },
+                { data: { id: 'Fine_Tuning', label: 'Fine Tuning' } },
+                { data: { id: 'RAG', label: 'Retrieval-Augmented Generation (RAG)' } },
+                { data: { id: 'GANs', label: 'Generative Adversarial Networks (GANs)' } },
+                { data: { id: 'NeRFs', label: 'Neural Radiance Fields (NeRFs)' } },
+                { data: { id: '3D_Convergence', label: '3D Convergence' } },
+                { data: { id: 'Compression', label: 'Compression' } },
+                { data: { id: 'Distillation', label: 'Distillation' } },
+
+                { data: { source: 'Supercomputing', target: 'Transformer', label: 'enables' } },
+                { data: { source: 'Transformer', target: 'Reinforcement_Learning', label: 'enhances' } },
+                { data: { source: 'Reinforcement_Learning', target: 'Planning', label: 'optimizes' } },
+                { data: { source: 'Planning', target: 'Meta_Learning', label: 'aids' } },
+                { data: { source: 'Meta_Learning', target: 'Fine_Tuning', label: 'improves' } },
+                { data: { source: 'Transformer', target: 'Diffusion_Models', label: 'powers' } },
+                { data: { source: 'Transformer', target: 'GANs', label: 'used in' } },
+                { data: { source: 'Transformer', target: 'RAG', label: 'integrates with' } },
+                { data: { source: 'GANs', target: 'NeRFs', label: 'applies to' } },
+                { data: { source: 'NeRFs', target: '3D_Convergence', label: 'advances' } },
+                { data: { source: 'Diffusion_Models', target: 'High_Dimensionality', label: 'requires' } },
+                { data: { source: 'Multimodal', target: 'High_Dimensionality', label: 'operates in' } },
+                { data: { source: 'Multimodal', target: 'Context', label: 'builds' } },
+                { data: { source: 'RAG', target: 'Context', label: 'augments' } },
+                { data: { source: 'Compression', target: 'Transformer', label: 'optimizes' } },
+                { data: { source: 'Compression', target: 'High_Dimensionality', label: 'reduces' } },
+                { data: { source: 'Distillation', target: 'Transformer', label: 'applies to' } },
+                { data: { source: 'Distillation', target: 'Compression', label: 'related to' } },
+                { data: { source: 'Distillation', target: 'Fine_Tuning', label: 'precedes' } }
+            ],
+
+            layout: {
+                name: 'cose',
+                padding: 10
+            },
+
+            style: [
+                {
+                    selector: 'node',
+                    style: {
+                        'label': 'data(label)',
+                        'background-color': '#61bffc',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'border-width': 2,
+                        'border-color': '#000'
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'label': 'data(label)',
+                        'width': 2,
+                        'line-color': '#ccc',
+                        'target-arrow-color': '#ccc',
+                        'target-arrow-shape': 'triangle',
+                        'curve-style': 'bezier'
+                    }
+                }
+            ]
+        });
+    </script>
 </body>
 </html>
