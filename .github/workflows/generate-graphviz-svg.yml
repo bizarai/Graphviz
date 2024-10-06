@@ -9,9 +9,9 @@ on:
 jobs:
   generate-svg:
     runs-on: ubuntu-latest
-    
-  permissions:
-    contents: write
+
+    permissions:
+      contents: write  # Necessary to commit and push back the changes
 
     steps:
       - name: Checkout repository
