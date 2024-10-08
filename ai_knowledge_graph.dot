@@ -9,7 +9,7 @@ digraph AI_Concepts {
     Transformer -> GANs [label="used in"];
     Transformer -> RAG [label="integrates with"];
     GANs -> NeRFs [label="applies to"];
-    NeRFs -> D3_Convergence [label="advances"];
+    NeRFs -> 3D_Convergence [label="advances"];
     Diffusion_Models -> High_Dimensionality [label="requires"];
     Multimodal -> High_Dimensionality [label="operates in"];
     Multimodal -> Context [label="builds"];
@@ -19,4 +19,10 @@ digraph AI_Concepts {
     Distillation -> Transformer [label="applies to"];
     Distillation -> Compression [label="related to"];
     Distillation -> Fine_Tuning [label="precedes"];
+    Searching -> RAG [label="powers"];
+    Searching -> Planning [label="enables"];
+    System_2_Thinking -> Reinforcement_Learning [label="aids"];
+    System_2_Thinking -> Planning [label="enhances"];
+    Episodic_Memory -> Context [label="retrieves"];
+    Episodic_Memory -> Meta_Learning [label="enhances"];
 }
